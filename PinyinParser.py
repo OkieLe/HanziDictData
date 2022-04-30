@@ -1,21 +1,12 @@
-import pandas as pd
-
-chengyu = pd.read_json('word.json')
-
 map_abbr = {'ā':'a', 'á':'a', 'ǎ':'a', 'à':'a', 'ō':'o', 'ó':'o', 'ǒ':'o', 'ò':'o',\
             'ē':'e', 'é':'e', 'ě':'e', 'è':'e', 'ī':'i', 'í':'i', 'ǐ':'i', 'ì':'i',\
             'ū':'u', 'ú':'u', 'ǔ':'u', 'ù':'u', 'ü':'v'}
 map_tone = {'ā':1, 'á':2, 'ǎ':3, 'à':4, 'ō':1, 'ó':2, 'ǒ':3, 'ò':4,\
            'ē':1, 'é':2, 'ě':3, 'è':4, 'ī':1, 'í':2, 'ǐ':3, 'ì':4,\
             'ū':1, 'ú':2, 'ǔ':3, 'ù':4}
-def abbreviation(pinyin):
+def asciiOf(pinyin):
     each = list(pinyin)
     return ''.join(list(map(lambda x: map_abbr[x[:1]] if x[:1] in map_abbr else x[:1], each)))
 def tone(pinyin):
     each = list(pinyin)
     return max(list(map(lambda x: map_tone[x[:1]] if x[:1] in map_tone else 0, each)))
-
-chengyu['abbreviation'] = chengyu['pinyin'].apply(abbreviation)
-chengyu['tone'] = chengyu['pinyin'].apply(tone)
-
-chengyu.to_json('hanzi.json', force_ascii=False, orient='records')

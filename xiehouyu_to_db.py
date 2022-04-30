@@ -1,6 +1,6 @@
 import pandas as pd
 import sqlite3 as db
- 
+
 con = db.connect('chinese.db')
 
 xiehouyu = pd.read_json('xiehouyu.json')
