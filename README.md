@@ -1,0 +1,2 @@
+# HanziDictData
+Database for hanzi
