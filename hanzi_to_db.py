@@ -34,7 +34,7 @@ with con:
     )
     cur.execute(
         """
-        DROP INDEX IF EXISTS ind_abbr
+        DROP INDEX IF EXISTS ind_full_pinyin
         """
     )
     cur.execute(
@@ -55,7 +55,7 @@ with con:
     )
     cur.execute(
         """
-        CREATE INDEX ind_abbr on Hanzi (abbrev)
+        CREATE INDEX ind_full_pinyin on Hanzi (abbrev)
         """
     )
     for index, row in hanzi.iterrows():
