@@ -4,7 +4,7 @@ from PinyinParser import *
 chengyu = pd.read_json('chengyu.json')
 
 def asciiOfChengyu(pinyin):
-    each = pinyin.split()
+    each = pinyin.replace("，", " ").split()
     return ''.join(list(map(asciiOf, each)))
 
 chengyu['ascii_pinyin'] = chengyu['pinyin'].apply(asciiOfChengyu)

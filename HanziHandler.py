@@ -1,7 +1,7 @@
 import pandas as pd
 from PinyinParser import *
 
-chengyu = pd.read_json('word.json')
+chengyu = pd.read_json('hanzi.json')
 
 chengyu['abbreviation'] = chengyu['pinyin'].apply(asciiOf)
 chengyu['tone'] = chengyu['pinyin'].apply(tone)
